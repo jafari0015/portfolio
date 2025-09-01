@@ -6,8 +6,8 @@ const About = () => {
       <div id="about">
         <div className="lg:flex items-center lg:gap-4 justify-between md:block ">
           <div>
-            <div className="mt-10 dark:bg-stone-800/10 border-[1px] dark:border-stone-700  relative
-                          border-stone-300 bg-stone-400/5 backdrop-blur-md md: lg:max-w-[600px] p-8 rounded-lg">
+            <div className="mt-2 backImage border-[1px] dark:border-stone-700  relative 
+                          border-stone-300 bg-stone-400/5 backdrop-blur-md lg:max-w-[600px] p-8 rounded-lg">
               <h2 className="dark:text-stone-50 text-stone-900 text-xl">
                 Developer Journey
               </h2>

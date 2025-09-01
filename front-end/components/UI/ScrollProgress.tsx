@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import { IoIosArrowUp } from "react-icons/io";
 
 
 const ScrollProgress: React.FC = () => {
@@ -53,6 +54,7 @@ const ScrollProgress: React.FC = () => {
           ref={pathRef}
           d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
         />
+        <IoIosArrowUp />
       </svg>
     </div>
   );

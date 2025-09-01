@@ -2,6 +2,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 import { client } from "@/libs/sanity";
 import { IoIosArrowBack } from "react-icons/io";
+import Navbar from "@/components/Navigation/NavPages";
+import ToggleButton from "@/components/Dark-Light/ToggleButton";
+import { CiCalendarDate } from "react-icons/ci";
+import { TbCategoryPlus } from "react-icons/tb";
 
 type Work = {
   title: string;
@@ -27,38 +31,68 @@ const WorkDetailPage: React.FC<WorkProps> = ({ work }) => {
       {/* <ScrollProgress /> */}
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="flex items-center justify-between gap-5 mb-8">
-          <div className="flex items-center gap-3 pointer-events-auto">
-            <button
-              className="dark:text-stone-400 text-stone-900 text-3xl border-[1px] border-stone-700 rounded-2xl px-1 py-1 transition-all duration-500 dark:hover:bg-white dark:hover:text-stone-950 hover:text-stone-950 hover:scale-110"
-              onClick={() => window.history.back()}
-            >
-              <IoIosArrowBack />
-            </button>
-            <h2 className="dark:text-stone-100 text-stone-900 text-lg font-bold">
-              Mahdi&apos;s Work
-            </h2>
-          </div>
-          {/* <ToggleButton /> */}
+          <Navbar />
+          <ToggleButton />
         </div>
 
-        <div className="bg-white dark:bg-[#121212] shadow-lg rounded-2xl p-8 transition-colors duration-500">
+        <div className="bg-white dark:bg-[#121212] shadow-lg rounded-2xl p-8 px-20 transition-colors duration-500">
           <img
             src={work.imageUrl}
             alt={work.title}
-            className="w-full h-64 sm:h-80 object-cover rounded-2xl mb-6 shadow-md"
+            className="w-full h-64  sm:h-[500px] object-cover rounded-xl mt-4 mb-6 shadow-md"
           />
-          <h1 className="text-3xl font-bold dark:text-stone-100 text-stone-900 mb-4">
+          <h1 className="text-3xl font-bold dark:text-[#c8f31d] text-stone-900 mb-4">
             {work.title}
           </h1>
-          <p className="text-gray-700 dark:text-stone-200 whitespace-pre-line mb-6">
-            {work.description}
-          </p>
+          <div>
+            <p className="text-gray-700 dark:text-stone-200 whitespace-pre-line mb-6">
+              {work.description}
+            </p>
+            <div>
+              <div>
+                <span>
+                  <span>
+                    <CiCalendarDate/>
+                  </span>
+                  <h4>Date:</h4>
+                </span>
+                <p>6, AUG 2025</p>
+              </div>
+              <div>
+                <span>
+                  <span>
+                    <TbCategoryPlus/>
+                  </span>
+                  <h4>Categories</h4>
+                </span>
+                <p>Website</p>
+              </div>
+              <div>
+                <span>
+                  <span>
+                    <CiCalendarDate/>
+                  </span>
+                  <h4>Date:</h4>
+                </span>
+                <p>6, AUG 2025</p>
+              </div>
+              <div>
+                <span>
+                  <span>
+                    <CiCalendarDate/>
+                  </span>
+                  <h4>Date:</h4>
+                </span>
+                <p>6, AUG 2025</p>
+              </div>
+            </div>
+          </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
             {(work.techStack ?? []).map((tech, idx) => (
               <span
                 key={idx}
-                className="px-3 py-1 bg-gray-200 dark:bg-stone-700 dark:text-stone-100 text-gray-800 rounded-full text-sm font-semibold"
+                className="px-3 py-1 border-[1px] border-stone-700 bg-transparent dark:text-stone-100 text-gray-800 rounded-full text-sm font-semibold"
               >
                 {tech}
               </span>
@@ -94,7 +128,6 @@ const WorkDetailPage: React.FC<WorkProps> = ({ work }) => {
 };
 
 export default WorkDetailPage;
-
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const works: { slug: { current: string } }[] = await client.fetch(

@@ -54,18 +54,18 @@ const HomePage: NextPage<HomePageProps> = ({ socialLinks, works, blogs , iconsPl
     <>
     <Layout>
       <main id="home" className="pt-4 sm:pt-32">
-        <div className="w-full p-6 sm:p-12 block sm:flex items-center md:gap-10 xl:gap-6 justify-around clip-path dark:bg-[#121212] bg-[#e6eaee]">
+        <div className="w-full p-6 sm:p-12 block sm:flex items-center md:gap-10 xl:gap-6 justify-around clip-path dark:bg-[#121212] bg-[#d2d3db]">
           <ProfileCard socialLinks={socialLinks} />
           <Home />
         </div>
-        <div className="inverted-border dark:bg-[#121212] bg-[#e6eaee] hidden xl:flex">
-          <div className="bottom-border hidden xl:flex dark:bg-[#121212] bg-[#e6eaee]"></div>
+        <div className="inverted-border dark:bg-[#121212] bg-[#d2d3db] hidden xl:flex">
+          <div className="bottom-border hidden xl:flex dark:bg-[#121212] bg-[#d2d3db]"></div>
         </div>
       </main>
 
-      <section className="md:px-8 px-4 xl:px-12 py-20 mt-10 rest-para dark:bg-[#121212] bg-[#e6eaee]">
-        <div className="inverted-top dark:bg-[#121212] bg-[#e6eaee] hidden xl:flex">
-          <div className="top-border dark:bg-[#121212] bg-[#e6eaee] hidden xl:flex"></div>
+      <section className="md:px-8 px-4 xl:px-12 py-20 mt-10 rest-para dark:bg-[#121212] bg-[#d2d3db]">
+        <div className="inverted-top dark:bg-[#121212] bg-[#d2d3db] hidden xl:flex">
+          <div className="top-border dark:bg-[#121212] bg-[#d2d3db] hidden xl:flex"></div>
         </div>
         <TitleSection title="About" text="Me" />
         <About />

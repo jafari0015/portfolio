@@ -4,6 +4,7 @@ import Image from "next/image";
 import { client } from "@/libs/sanity";
 import { IoIosArrowBack } from "react-icons/io";
 import ToggleButton from "@/components/Dark-Light/ToggleButton";
+import Background from "@/components/Background/Background";
 
 interface Blog {
   _id: string;
@@ -26,7 +27,8 @@ export default function BlogPage({ blogs }: Props) {
 
   return (
     <>
-      <div className="flex items-center justify-between mb-10">
+    <Background />
+      <div className="flex items-center justify-between mb-5 mt-5">
         <button
           className="dark:text-stone-400 text-stone-900 text-3xl border-[1px] border-stone-700 rounded-2xl px-1 py-1 transition-all duration-500 dark:hover:bg-white dark:hover:text-stone-950 hover:text-stone-950 hover:scale-110"
           onClick={() => window.history.back()}
@@ -34,7 +36,7 @@ export default function BlogPage({ blogs }: Props) {
           <IoIosArrowBack />
         </button>
         <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 ">
-          Mahdi Jafari Blog
+          MAHDI
         </h1>
         <span>
           <ToggleButton />

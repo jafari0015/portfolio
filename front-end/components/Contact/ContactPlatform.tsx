@@ -28,7 +28,7 @@ const ContactPlatform: React.FC<IconsPlatformProps> = ({ iconsPlatform }) => {
     FaLinkedinIn: <FaLinkedinIn />
   };
   return (
-          <div className="dark:bg-stone-900/55 backdrop-blur-md bg-stone-400/5  p-6 rounded-2xl border-[1px] border-stone-300 lg:h-[360px] mt-10 dark:border-stone-700  lg:max-w-[650px]">
+          <div className="backImage backdrop-blur-md bg-stone-400/5  p-6 rounded-2xl border-[1px] border-stone-300 lg:h-[360px] mt-10 dark:border-stone-700  lg:max-w-[650px]">
             <h2 className="dark:text-stone-100 text-stone-900 text-2xl font-semibold text-center">
               Contact Via Platform 
             </h2>

@@ -20,7 +20,7 @@ const ProfileCard = memo(function ProfileCard({socialLinks}: {socialLinks: Socia
 
     return (
         <div className='relative rounded-xl mt-20 sm:mt-0 xl:pr-10'>
-            <div className='rounded-xl border-[1px] border-stone-300 dark:border-stone-700 
+            <div className='rounded-xl border-[1px] border-stone-400 dark:border-stone-700 
                             border-solid px-8 py-8 bg-transparent'>
                 <div className='lg:w-64 md:w-52'>
                     <img src={profile.src} className='rounded-xl' alt="Mahdi Jafari" />
@@ -40,8 +40,8 @@ const ProfileCard = memo(function ProfileCard({socialLinks}: {socialLinks: Socia
                             className="pointer-events-auto z-50 px-3 py-3 dark:text-stone-100  border-[1px] rounded-md dark:border-stone-700  border-stone-400 text-stone-800
                                      dark:hover:bg-white dark:hover:text-stone-950 transition-all cursor-pointer  duration-500 hover:scale-105 hover:bg-black hover:text-stone-50"                            >
                             {iconsMap[link.icon as keyof typeof iconsMap] && 
-  React.cloneElement(iconsMap[link.icon as keyof typeof iconsMap], { className: "pointer-events-none" })
-}
+                            React.cloneElement(iconsMap[link.icon as keyof typeof iconsMap], { className: "pointer-events-none" })
+                            }
 
                         </a>
                     ))}

@@ -44,7 +44,7 @@ const ContactForm: React.FC = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
@@ -52,16 +52,46 @@ const ContactForm: React.FC = () => {
       setStatus({ message: "", type: "" });
       return;
     }
-    setErrors({});
-    setStatus({ message: "Message sent successfully!", type: "success" });
-    setFormData({ name: "", email: "", message: "" });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus({ message: "Message sent successfully!", type: "success" });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus({ message: data.message, type: "error" });
+      }
+    } catch (error) {
+      setStatus({ message: "Something went wrong.", type: "error" });
+    }
+
+    // Auto-hide toast after 3 seconds
+    setTimeout(() => setStatus({ message: "", type: "" }), 3000);
   };
 
   return (
-    <div className="dark:bg-stone-900/55 backdrop-blur-md border-[1px] border-stone-300 p-6 rounded-2xl  mt-10 dark:border-stone-700  lg:max-w-[600px]">
+    <div className="backImage backdrop-blur-md border-[1px] border-stone-300 p-6 rounded-2xl mt-10 dark:border-stone-700 lg:max-w-[600px] relative">
+      {/* Floating toast popup */}
+      {status.message && (
+        <div
+          className={`fixed top-24 left-24 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
+            status.type === "success" ? "bg-green-900 text-white" : "bg-red-900 text-white"
+          }`}
+        >
+          {status.message}
+        </div>
+      )}
+
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 lg:w-[350px] xl:w-[450px] max-w-[600px]"
+        className="flex flex-col gap-4 lg:w-[350px] xl:w-[450px]"
       >
         <input
           type="text"
@@ -96,26 +126,14 @@ const ContactForm: React.FC = () => {
             errors.message ? "border-red-700" : ""
           }`}
         />
-        {errors.message && (
-          <p className="text-red-700 text-sm">{errors.message}</p>
-        )}
+        {errors.message && <p className="text-red-700 text-sm">{errors.message}</p>}
 
         <button
           type="submit"
-          className="w-full dark:bg-stone-800 bg-gray-300 text-stone-950 dark:text-white p-3 rounded-lg font-semibold hover:bg-slate-400 dark:hover:bg-stone-700 transition-colors"
+          className="w-full dark:bg-[#c8f31d] bg-gray-300 text-stone-950 font-semibold p-3 rounded-lg hover:bg-slate-400 transition-colors"
         >
           Send Message
         </button>
-
-        {status.message && (
-          <p
-            className={`text-base mt-2 ${
-              status.type === "success" ? "text-green-600" : "text-red-600"
-            }`}
-          >
-            {status.message}
-          </p>
-        )}
       </form>
     </div>
   );

@@ -6,7 +6,6 @@ import { CiShoppingTag } from "react-icons/ci";
 import Link from 'next/link';
 
 interface BlogType {
-  _id: string;
   title: string;
   text: string;
   techs?: string[];
@@ -22,7 +21,7 @@ const Blog: React.FC<BlogProps> = ({ blogs }) => {
     <section id='article'>
       <div className='lg:grid grid-cols-3 gap-6 mt-10' >
       {blogs.map((blog) => (
-        <div key={blog.slug.current} className='dark:text-stone-100 text-stone-900 border-[1px] md:mt-8 mt-6 border-neutral-300 dark:border-stone-700 bg-neutral-100 dark:bg-stone-900/55 dark:backdrop-blur-md rounded-xl p-6'>
+        <div key={blog.slug.current} className='dark:text-stone-100 text-stone-900 border-[1px] md:mt-8 mt-6 border-neutral-300 dark:border-stone-700 bg-neutral-100 backImage dark:backdrop-blur-md rounded-xl p-6'>
           <h2 className='text-[23px]'>{blog.title}</h2>
           <div>
             <span className='flex text-xs mt-2 dark:text-stone-500 text-stone-600 items-center justify-start gap-3'>
@@ -44,7 +43,8 @@ const Blog: React.FC<BlogProps> = ({ blogs }) => {
               <span className='relative z-10 flex items-center gap-3 justify-center'>
                 Read the full article <span><RxExternalLink /></span>
               </span>
-              <span className='absolute inset-0 bg-neutral-200 dark:bg-stone-700 duration-700 transition-transform ease-out group-hover:translate-x-0 -translate-x-full'></span>
+              <span className='absolute inset-0 bg-neutral-200 dark:bg-stone-700 duration-700 transition-transform 
+                               ease-out group-hover:translate-x-0 -translate-x-full'></span>
             </button>
           </Link>
         </div>
