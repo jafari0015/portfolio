@@ -35,7 +35,7 @@ const Home: React.FC = () => {
                   </div>
                   <div>a passionate </div>
                 </div>
-                <span className="border-part border-[1px] border-solid dark:border-stone-700 border-stone-400">
+                <span className="border-part border-[1px] border-solid dark:border-[#c8f31d] border-green-800">
                   Front-end Developer
                   <i></i>
                 </span>
@@ -43,7 +43,7 @@ const Home: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="flex items-center sm:justify-center justify-around -ml-1 mt-6 sm:mt-14 gap-2 lg:gap-8">
+          <div className="flex items-center justify-center mb-10 sm:mb-0 -ml-1 mt-6 sm:mt-14 gap-2 lg:gap-8">
             <ContactButton />
             <ResumeButton />
           </div>

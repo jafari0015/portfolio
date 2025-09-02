@@ -14,13 +14,21 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method !== "POST") {
-    return res.status(405).json({ success: false, message: "Method not allowed" });
+    return res
+      .status(405)
+      .json({ success: false, message: "Method not allowed" });
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, message } = req.body as {
+    name: string;
+    email: string;
+    message: string;
+  };
 
   if (!name || !email || !message) {
-    return res.status(400).json({ success: false, message: "Missing required fields" });
+    return res
+      .status(400)
+      .json({ success: false, message: "Missing required fields" });
   }
 
   try {
@@ -32,9 +40,8 @@ export default async function handler(
       createdAt: new Date().toISOString(),
     });
 
-   
     await resend.emails.send({
-      from: "mahdi@resend.dev", 
+      from: "mahdi@resend.dev",
       to: email,
       subject: "Thank you for contacting us!",
       html: `<p>Hi ${name},</p>
@@ -42,9 +49,13 @@ export default async function handler(
              <p>Best regards,<br/>Mahdi Jafari</p>`,
     });
 
-    return res.status(200).json({ success: true, message: "Message sent successfully!" });
-  } catch (err: any) {
+    return res
+      .status(200)
+      .json({ success: true, message: "Message sent successfully!" });
+  } catch (err: unknown) {
     console.error("Error:", err);
-    return res.status(500).json({ success: false, message: "Internal server error" });
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
   }
 }

@@ -7,20 +7,26 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import oneDark from "react-syntax-highlighter/dist/esm/styles/prism/one-dark";
 import duotoneLight from "react-syntax-highlighter/dist/esm/styles/prism/duotone-light";
 import Background from "@/components/Background/Background";
-import { IoIosArrowBack } from "react-icons/io";
+import Navbar from "@/components/Navigation/NavPages";
+import ToggleButton from "@/components/Dark-Light/ToggleButton";
+import Footer from "@/components/footer/Footer";
+import ImageUrlBuilder from "@sanity/image-url";
 
-const darkTheme: any = oneDark;
-const lightTheme: any = duotoneLight;
+const builder = ImageUrlBuilder(client);
+
+function urlFor(source: any) {
+  return builder.image(source);
+}
 
 export default function BlogDetail({ blog }: { blog: any }) {
-  if (!blog) return <p>Not found</p>;
+  if (!blog) return <p className="min-h-screen flex items-center justify-center text-6xl text-red-700">Not found</p>;
 
   const components: PortableTextComponents = {
     types: {
-      image: ({ value }) => (
+      image: ({ value }: any) => (
         <div className="my-8 flex justify-center">
           <Image
-            src={value.asset.url}
+            src={urlFor(value).width(900).url()} // safer and optimized
             alt={value.alt || "Blog image"}
             width={900}
             height={400}
@@ -50,20 +56,10 @@ export default function BlogDetail({ blog }: { blog: any }) {
       ),
     },
     block: {
-      h1: ({ children }) => (
-        <h1 className="text-4xl md:text-5xl font-extrabold mt-10 mb-6 leading-tight text-gray-900 dark:text-white">
-          {children}
-        </h1>
-      ),
       h2: ({ children }) => (
         <h2 className="text-3xl md:text-4xl font-bold mt-8 mb-4 text-gray-800 dark:text-gray-200">
           {children}
         </h2>
-      ),
-      h3: ({ children }) => (
-        <h3 className="text-2xl font-semibold mt-6 mb-3 text-gray-700 dark:text-gray-300">
-          {children}
-        </h3>
       ),
       normal: ({ children }) => (
         <p className="text-lg leading-8 text-gray-700 dark:text-gray-300 mb-5">
@@ -88,42 +84,56 @@ export default function BlogDetail({ blog }: { blog: any }) {
   return (
     <>
       <Background />
-      <div className="px-6 sm:px-10 lg:px-0 max-w-4xl mx-auto py-12">
-        <button
-          className="mb-8 text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
-          onClick={() => window.history.back()}
-        >
-          <IoIosArrowBack />
-        </button>
+      <div className="flex items-center justify-between gap-5 mb-4 mt-6 ">
+        <Navbar />
+        <ToggleButton />
+      </div>
+      <div className="px-28 py-12 dark:bg-[#121212] rounded-xl bg-[#d7d7d7] ">
+        <div>
+          <div className="mb-6">
+            <div className="flex items-center justify-center gap-2 mt-4">
+              {blog.techs?.map((tech: any, idx: any) => (
+                <span
+                  key={idx}
+                  className="text-xs px-3 py-1 rounded-full border border-gray-400 dark:border-stone-700 bg-transparent dark:bg-[#2a2a2a] text-gray-700 dark:text-gray-300"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <h1 className="text-4xl md:text-5xl text-center mt-8 font-bold tracking-wider leading-loose mb-4 text-gray-900 dark:text-white">
+              {blog.title}
+            </h1>
 
+            <p className="text-green-800 dark:text-[#c8f31d] tracking-widest text-sm mb-10 mt-10 text-center ">
+              {new Date(blog.date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+              <span className="tracking-widest font-semibold dark:text-stone-200 text-stone-950 text-xl">
+                By Admin
+              </span>
+            </p>
+          </div>
+        </div>
         {blog.mainImage?.asset?.url && (
           <div className="mb-10">
             <Image
               src={blog.mainImage.asset.url}
               alt={blog.title}
-              width={1000}
+              width={700}
               height={500}
-              className="rounded-2xl shadow-md object-cover w-full max-h-[500px]"
+              className="rounded-2xl shadow-md object-cover w-full  max-h-[500px]"
             />
           </div>
         )}
-
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 dark:text-white">
-          {blog.title}
-        </h1>
-
-        <p className="text-gray-500 dark:text-gray-400 text-sm mb-10">
-          {new Date(blog.date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
 
         <article className="prose prose-lg dark:prose-invert max-w-none">
           <PortableText value={blog.content} components={components} />
         </article>
       </div>
+      <Footer />
     </>
   );
 }
@@ -145,6 +155,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     title,
     date,
     content,
+    techs,
     mainImage{ asset->{url} }
   }`;
 
@@ -155,3 +166,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 60,
   };
 };
+

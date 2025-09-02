@@ -63,7 +63,7 @@ const ContactForm: React.FC = () => {
       const data = await res.json();
 
       if (data.success) {
-        setStatus({ message: "Message sent successfully!", type: "success" });
+        setStatus({ message: "Email recived successfully, we'll be in touch soon. !", type: "success" });
         setFormData({ name: "", email: "", message: "" });
       } else {
         setStatus({ message: data.message, type: "error" });
@@ -77,7 +77,8 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="backImage backdrop-blur-md border-[1px] border-stone-300 p-6 rounded-2xl mt-10 dark:border-stone-700 lg:max-w-[600px] relative">
+    <div className="backImage lightBackImage border-[1px] border-stone-300 p-6 rounded-2xl mt-10 dark:border-stone-700 
+                    lg:max-w-[600px] relative">
       {/* Floating toast popup */}
       {status.message && (
         <div
@@ -130,7 +131,7 @@ const ContactForm: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full dark:bg-[#c8f31d] bg-gray-300 text-stone-950 font-semibold p-3 rounded-lg hover:bg-slate-400 transition-colors"
+          className="w-full dark:bg-[#c8f31d]  bg-green-800 text-stone-950 font-semibold p-3 rounded-lg  transition-colors"
         >
           Send Message
         </button>

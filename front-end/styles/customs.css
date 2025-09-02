@@ -64,14 +64,12 @@
     position: relative;
     border-radius: 20px 20px 20px 0px;
 }
-
 .inverted-border {
     width: 409px;
     height: 80px;
     position: relative;
     border-bottom-left-radius: 20px;
 }
-
 .bottom-border {
     width: 60px;
     height: 80px;
@@ -121,10 +119,13 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #444;
+    background: #166534;
     position: absolute;
 }
-
+.dark .border-part:before,
+.dark .border-part::after{
+    background-color: #c8f31d;
+}
 .border-part::after {
     right: -3px;
     top: -3px;
@@ -150,10 +151,13 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #444;
+    background: #166534;
     position: absolute;
 }
-
+.dark  .border-part i::before,
+.dark  .border-part i::after {
+    background-color: #c8f31d;
+}
 .border-part i::before {
     left: -3px;
     bottom: -3px;
@@ -241,6 +245,26 @@
   background-repeat: repeat;
   background-size: auto;
   opacity: 0.09;    
+  z-index: -1; 
+  pointer-events: none; 
+}
+.lightBackImage {
+  position: relative;
+  overflow-x: hidden; 
+  z-index: 0;
+  background-color: #fff;
+}
+.lightBackImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/profile_image/background.jpg');
+  background-repeat: repeat;
+  background-size: auto;
+  opacity: 0.2;    
   z-index: -1; 
   pointer-events: none; 
 }

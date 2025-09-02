@@ -27,7 +27,7 @@ const ProfileCard = memo(function ProfileCard({socialLinks}: {socialLinks: Socia
                 </div>
                 <div className='text-center mt-6 dark:text-[#fff] text-stone-900'>
                   <h3 className='text-xl font-semibold'>Mahdi Jafari </h3>
-                  <p className='text-base uppercase'>Availabe for serverces </p>
+                  <p className='text-base uppercase dark:text-[#c8f31d] text-green-700'>Availabe for serverces </p>
                 </div>
 
                 <div className='flex items-center justify-center gap-2 mt-6 '>
@@ -37,7 +37,7 @@ const ProfileCard = memo(function ProfileCard({socialLinks}: {socialLinks: Socia
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="pointer-events-auto z-50 px-3 py-3 dark:text-stone-100  border-[1px] rounded-md dark:border-stone-700  border-stone-400 text-stone-800
+                            className="pointer-events-auto  px-3 py-3 dark:text-stone-100  border-[1px] rounded-md dark:border-stone-700  border-stone-400 text-stone-800
                                      dark:hover:bg-white dark:hover:text-stone-950 transition-all cursor-pointer  duration-500 hover:scale-105 hover:bg-black hover:text-stone-50"                            >
                             {iconsMap[link.icon as keyof typeof iconsMap] && 
                             React.cloneElement(iconsMap[link.icon as keyof typeof iconsMap], { className: "pointer-events-none" })

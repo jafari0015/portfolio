@@ -41,14 +41,14 @@ const MobileNavbar: React.FC = memo(() => {
   return (
     <nav
       className={`sm:hidden fixed top-0 left-0 w-full z-50 transition-all duration-700 ${
-        navScrolled ? "dark:bg-[#1d1d1d] bg-stone-200" : "bg-transparent"
+        navScrolled ? "dark:bg-stone-900/5  backdrop-blur-lg bg-stone-200" : "bg-transparent"
       }`}
     >
       {/* Top bar */}
       <div className="flex justify-between items-center px-6 py-4">
-        <div className="flex bg-gradient-to-r from-slate-900 to-indigo-600 dark:to-indigo-300 text-transparent bg-clip-text text-4xl font-bold cursor-pointer transition-all duration-1000">
+        <div className="flex  dark:text-stone-100 text-xl font-medium mt-5 tracking-widest cursor-pointer transition-all duration-1000">
           <ScrollLink to="home" smooth duration={700}>
-            MJ
+            MAHDI
           </ScrollLink>
         </div>
         <button
@@ -61,7 +61,7 @@ const MobileNavbar: React.FC = memo(() => {
 
       {/* Mobile menu */}
       <div
-        className={`absolute top-0 left-0 w-full bg-neutral-200 dark:bg-black border-b-2 dark:border-stone-900 border-stone-300 shadow-lg transform transition-transform duration-500 ${
+        className={`absolute top-0 left-0 w-full bg-neutral-200 bg-stone-900/5 backdrop-blur-lg border-b-2 dark:border-[#c8f31d] border-green-700 shadow-lg transform transition-transform duration-500 ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
@@ -82,11 +82,11 @@ const MobileNavbar: React.FC = memo(() => {
               spy
               onSetActive={() => setActive(item.id)}
               onClick={() => setIsOpen(false)}
-              className={`cursor-pointer text-lg font-medium transition-colors uppercase ${
+              className={`transition-all duration-300 z-10 ${
                 active === item.id
-                  ? "text-stone-900 dark:text-gray-100"
-                  : "text-stone-700 dark:text-gray-400"
-              }`}
+                  ? "drop-shadow-[0_0_10px_#15803d] dark:drop-shadow-[0_0_10px_#c8f31d] text-green-700 dark:text-[#c8f31d]"
+                  : "text-stone-900 dark:text-gray-400"
+              } hover:drop-shadow-[0_0_10px_#15803d] dark:hover:drop-shadow-[0_0_10px_#c8f31d] hover:dark:text-[#c8f31d]`}
             >
               <div className="flex items-center justify-center gap-4">
                 {item.icon}
@@ -99,5 +99,7 @@ const MobileNavbar: React.FC = memo(() => {
     </nav>
   );
 });
+
+MobileNavbar.displayName = "MobileNavbar";
 
 export default MobileNavbar;
