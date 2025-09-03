@@ -78,11 +78,10 @@ const ContactForm: React.FC = () => {
 
   return (
     <div className="backImage lightBackImage border-[1px] border-stone-300 p-6 rounded-2xl mt-10 dark:border-stone-700 
-                    lg:max-w-[600px] relative">
-      {/* Floating toast popup */}
+                    lg:max-w-[600px] 2xl:max-w-[800px] relative">
       {status.message && (
         <div
-          className={`fixed top-24 left-24 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
+          className={`fixed top-24 left-10 sm:left-24 z-50 p-4 rounded-lg shadow-lg transition-all duration-300 ${
             status.type === "success" ? "bg-green-900 text-white" : "bg-red-900 text-white"
           }`}
         >

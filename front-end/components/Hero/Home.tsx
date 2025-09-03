@@ -28,18 +28,18 @@ const Home: React.FC = () => {
           </div>
           <div>
             <div className="hidden sm:flex text-hello dark:text-stone-50 text-stone-900 mt-6 max-w-[600px] sm:text-2xl font-semibold md:text-2xl lg:text-4xl xl:text-5xl">
-              <div className="hero-section">
+              <div className="hero-section leading-loose">
                 <div className="flex items-center gap-2">
-                  <div className="hidden sm:block dark:text-[#c8f31d] text-green-700">
+                  <div className="hidden sm:block dark:text-[#c8f31d] mt-1 text-green-700">
                     Mahdi Jafari ,
                   </div>
                   <div>a passionate </div>
                 </div>
-                <span className="border-part border-[1px] border-solid dark:border-[#c8f31d] border-green-800">
+                <span className="border-part border-[1px] border-solid mt-1 dark:border-[#c8f31d] border-green-800">
                   Front-end Developer
                   <i></i>
                 </span>
-                crafting code, learning daily, growing constantly.
+                <span className="mt-2">crafting code, learning daily, growing constantly.</span>
               </div>
             </div>
           </div>

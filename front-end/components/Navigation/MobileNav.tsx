@@ -44,7 +44,7 @@ const MobileNavbar: React.FC = memo(() => {
         navScrolled ? "dark:bg-stone-900/5  backdrop-blur-lg bg-stone-200" : "bg-transparent"
       }`}
     >
-      {/* Top bar */}
+
       <div className="flex justify-between items-center px-6 py-4">
         <div className="flex  dark:text-stone-100 text-xl font-medium mt-5 tracking-widest cursor-pointer transition-all duration-1000">
           <ScrollLink to="home" smooth duration={700}>
@@ -59,9 +59,8 @@ const MobileNavbar: React.FC = memo(() => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <div
-        className={`absolute top-0 left-0 w-full bg-neutral-200 bg-stone-900/5 backdrop-blur-lg border-b-2 dark:border-[#c8f31d] border-green-700 shadow-lg transform transition-transform duration-500 ${
+        className={`absolute top-0 left-0 w-full bg-neutral-200/10 dark:bg-stone-900/5 backdrop-blur-lg border-b-2 dark:border-[#c8f31d] border-green-700 shadow-lg transform transition-transform duration-500 ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >

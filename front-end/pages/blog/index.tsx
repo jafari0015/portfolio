@@ -41,24 +41,25 @@ export default function BlogPage({ blogs }: Props) {
       <Background />
       <div className="flex items-center justify-between gap-5 mt-5">
         <Navbar />
-        <ToggleButton />
+       <span className="hidden sm:flex"> <ToggleButton /></span>
       </div>
 
       <div className="px-6 sm:px-10 py-10 bg-gray-100 dark:bg-[#121212] min-h-screen mt-5 rounded-2xl transition-colors duration-500">
         <div className="text-center mb-12">
           <h3 className="text-2xl dark:text-stone-100 tracking-widest text-stone-950">OUR BLOG</h3>
-          <h1 className="dark:text-stone-100 text-stone-950 text-4xl tracking-widest">
+          <h1 className="dark:text-stone-100 text-stone-950 text-2xl sm:text-4xl tracking-widest ">
             <span className="dark:text-[#c8f31d] text-green-700">Articles</span> & Resources
           </h1>
           <div className="flex justify-center mt-10 relative">
             <img
               src="/profile_image/blog.jpg"
               alt="Welcome to your blog"
-              className="rounded-md w-full px-24 relative"
+              className="rounded-md sm:w-full sm:px-24 relative"
             />
-            <div className="absolute dark:text-stone-100 text-stone-950 bg-neutral-300 dark:bg-[#1a1a1a] top-[90%] p-8 w-full rounded-md max-w-2xl">
-              <h1 className="text-2xl font-semibold">Welcome to My Blog</h1>
-              <p>
+            <div className="absolute dark:text-stone-100 text-stone-950 bg-neutral-300 dark:bg-[#1a1a1a] sm:top-[90%] top-[85%] 
+                            p-8 w-full rounded-md sm:max-w-2xl max-w-72">
+              <h1 className="sm:text-2xl text-xl font-semibold">Welcome to My Blog</h1> <br />
+              <p className="text-sm sm:text-base">
                 Here, I share insights, tutorials, and experiences from my journey in tech and beyond. Grab a coffee and enjoy the read!
               </p>
             </div>
@@ -66,7 +67,7 @@ export default function BlogPage({ blogs }: Props) {
         </div>
 
         <div>
-          <h1 className="dark:text-stone-50 text-stone-950 text-2xl mt-40">All POSTS</h1>
+          <h1 className="dark:text-stone-50 text-stone-950 text-2xl mt-48 sm:mt-40">All POSTS</h1>
         </div>
         <div className="mt-10 dark:bg-[#c8f31d] bg-green-800 text-transparent h-[1px] w-full" />
 

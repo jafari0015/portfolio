@@ -28,7 +28,7 @@ const ContactPlatform: React.FC<IconsPlatformProps> = ({ iconsPlatform }) => {
   };
 
   return (
-    <div className="backImage lightBackImage  p-6 rounded-2xl border-[1px] border-stone-300 lg:h-[360px] mt-10 dark:border-stone-700  lg:max-w-[650px]">
+    <div className="backImage lightBackImage  p-6 rounded-2xl border-[1px] border-stone-300 lg:h-[360px] mt-10 dark:border-stone-700  lg:max-w-[650px] 2xl:max-w-[800px]">
       <h2 className="dark:text-stone-100 text-stone-900 text-2xl font-semibold text-center">
         Contact Via Platform 
       </h2>

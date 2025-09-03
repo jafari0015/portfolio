@@ -4,7 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-const SpotLightCard = dynamic(() => import("@/components/Animations/SpotLightCard"), { ssr: false });
+const SpotLightCard = dynamic(
+  () => import("@/components/Animations/SpotLightCard"),
+  { ssr: false }
+);
 
 interface WorkType {
   title: string;
@@ -17,7 +20,7 @@ interface WorkType {
 
 interface WorkProps {
   works: WorkType[];
-  pageSize?: number; 
+  pageSize?: number;
 }
 
 const Work: React.FC<WorkProps> = ({ works, pageSize = 6 }) => {
@@ -37,14 +40,14 @@ const Work: React.FC<WorkProps> = ({ works, pageSize = 6 }) => {
         {paginatedWorks.map((work) => (
           <SpotLightCard key={work.slug.current} className="p-6">
             <div>
-              <div className="lg:w-full lg:h-[150px] md:w-full md:h-[250px] xl:h-[180px] relative">
+              <div className="relative w-full h-[200px] sm:h-[220px] md:h-[250px] lg:h-[150px] xl:h-[180px]">
                 <a href={work.github} target="_blank" rel="noopener noreferrer">
                   <Image
                     src={work.imageUrl}
                     alt={work.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-2xl z-50 hover:scale-105 transition-all duration-700 dark:hover:border-[1px] dark:hover:border-stone-700 hover:border-[1px] hover:border-stone-200"
+                    fill
+                    className="rounded-2xl z-50 hover:scale-105 transition-all duration-700 dark:hover:border-[1px] 
+                 dark:hover:border-stone-700 hover:border-[1px] hover:border-stone-200 object-cover"
                     placeholder="blur"
                     blurDataURL="/placeholder.png"
                   />

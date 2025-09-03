@@ -22,7 +22,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({iconsPlatform}) => {
           consultation, or simply want to exchange technical topics, please feel
           free to contact me at any time.
         </p>
-        <div className=" lg:flex items-center justify-start lg:gap-5 xl:gap-10 2xl:gap-16">
+        <div className=" lg:flex items-center justify-around lg:gap-5 xl:gap-10 2xl:gap-32">
             <ContactPlatform  iconsPlatform={iconsPlatform}/>
             <ContactForm />
         </div>
